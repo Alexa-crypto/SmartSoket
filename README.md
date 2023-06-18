@@ -7,7 +7,9 @@
 
 Схему пристрою наведено нижче:
 ![image](https://github.com/Alexa-crypto/SmartSoket/assets/78495955/d8bcb5c8-c1f4-4fc3-80a2-9340aa8c6e7a)
-Нижче скріни додатку та веб сторінки налаштувань
+
+Нижче скріни додатку та веб сторінки налаштувань:
+
 ![image](https://github.com/Alexa-crypto/SmartSoket/assets/78495955/04dc36d1-7ac8-47ec-b5e4-99c3060a277a)
 ![image](https://github.com/Alexa-crypto/SmartSoket/assets/78495955/e2c67440-b12f-4c92-905a-5e66c2b05530)
 ![image](https://github.com/Alexa-crypto/SmartSoket/assets/78495955/77c12f30-3b93-4c10-910c-94d2c7160c75)
