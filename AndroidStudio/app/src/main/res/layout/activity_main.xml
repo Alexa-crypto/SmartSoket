@@ -1,0 +1,412 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="31dp"
+        tools:layout_editor_absoluteY="-245dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/Header_top"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/Header_app"
+                android:textAlignment="textStart"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageButton
+                android:id="@+id/iBut_setting"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:contentDescription="@string/setting"
+                android:onClick="click_setting"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@mipmap/ic_setting" />
+
+            <ImageView
+                android:id="@+id/image_top"
+                android:layout_width="324dp"
+                android:layout_height="188dp"
+                android:layout_marginTop="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/Header_top"
+                app:srcCompat="@drawable/screenshot_2023_02_12_18_57_39_255_edit_com_alibaba_aliexpresshd"
+                tools:ignore="ContentDescription" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_con_succes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:cardCornerRadius="15dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/image_top">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/image_con_succes"
+                        android:layout_width="34dp"
+                        android:layout_height="33dp"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:layout_weight="1"
+                        app:srcCompat="@android:drawable/presence_online"
+                        tools:ignore="ContentDescription,ImageContrastCheck" />
+
+                    <TextView
+                        android:id="@+id/text_con_succes"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:layout_weight="1"
+                        android:text="@string/connect_succes"
+                        android:textSize="20sp" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_con_error"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:cardCornerRadius="15dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/image_top">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/image_con_error"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:layout_weight="1"
+                        app:srcCompat="@android:drawable/ic_dialog_alert"
+                        tools:ignore="ContentDescription" />
+
+                    <TextView
+                        android:id="@+id/text_con_error"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:layout_weight="1"
+                        android:text="@string/error_conect"
+                        android:textSize="20sp" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <ImageButton
+                android:id="@+id/iBut_conect_update"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:contentDescription="@string/update_conect"
+                android:onClick="click_conect_update"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/card_con_succes"
+                app:layout_constraintTop_toTopOf="@+id/card_con_succes"
+                app:srcCompat="@mipmap/ic_update" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_swich"
+                android:layout_width="350dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="16dp"
+                app:cardCornerRadius="15dp"
+                app:cardElevation="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/card_con_succes">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <Switch
+                        android:id="@+id/switch_socet"
+                        android:layout_width="320dp"
+                        android:layout_height="50dp"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginRight="16dp"
+                        android:layout_weight="0"
+                        android:onClick="click_switch_socet"
+                        android:text="@string/On_Off"
+                        android:textOff="@string/Off"
+                        android:textOn="@string/On"
+                        tools:ignore="InefficientWeight,UseSwitchCompatOrMaterialXml" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_data"
+                android:layout_width="350dp"
+                android:layout_height="225dp"
+                android:layout_marginTop="8dp"
+                app:cardCornerRadius="15dp"
+                app:cardElevation="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/card_swich"
+                tools:ignore="TextSizeCheck">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/Data_current"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:text="@string/no_data"
+                        android:textSize="24sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/Header_currenr"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="@string/Current"
+                        android:textSize="10sp"
+                        app:layout_constraintEnd_toEndOf="@+id/Data_current"
+                        app:layout_constraintStart_toStartOf="@+id/Data_current"
+                        app:layout_constraintTop_toBottomOf="@+id/Data_current"
+                        tools:ignore="SmallSp" />
+
+                    <TextView
+                        android:id="@+id/Data_voltage"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="16dp"
+                        android:text="@string/no_data"
+                        android:textSize="24sp"
+                        app:layout_constraintEnd_toStartOf="@+id/Data_current"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/Header_voltage"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="@string/Voltage"
+                        android:textSize="10sp"
+                        app:layout_constraintEnd_toEndOf="@+id/Data_voltage"
+                        app:layout_constraintStart_toStartOf="@+id/Data_voltage"
+                        app:layout_constraintTop_toBottomOf="@+id/Data_voltage"
+                        tools:ignore="SmallSp" />
+
+                    <TextView
+                        android:id="@+id/Data_power"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:text="@string/no_data"
+                        android:textSize="24sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.492"
+                        app:layout_constraintStart_toEndOf="@+id/Data_current"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/Header_power"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="@string/Power"
+                        android:textSize="10sp"
+                        app:layout_constraintEnd_toEndOf="@+id/Data_power"
+                        app:layout_constraintStart_toStartOf="@+id/Data_power"
+                        app:layout_constraintTop_toBottomOf="@+id/Data_power"
+                        tools:ignore="SmallSp" />
+
+                    <TextView
+                        android:id="@+id/Data_pow_fack"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="24dp"
+                        android:text="@string/no_data"
+                        android:textSize="24sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/Header_currenr" />
+
+                    <TextView
+                        android:id="@+id/Header_pow_fack"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="@string/Power_Factor"
+                        android:textSize="10sp"
+                        app:layout_constraintEnd_toEndOf="@+id/Data_pow_fack"
+                        app:layout_constraintStart_toStartOf="@+id/Data_pow_fack"
+                        app:layout_constraintTop_toBottomOf="@+id/Data_pow_fack"
+                        tools:ignore="SmallSp" />
+
+                    <TextView
+                        android:id="@+id/Data_frequency"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="24dp"
+                        android:text="@string/no_data"
+                        android:textSize="24sp"
+                        app:layout_constraintEnd_toStartOf="@+id/Data_pow_fack"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/Header_voltage" />
+
+                    <TextView
+                        android:id="@+id/Header_frequency"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="@string/Frequency"
+                        android:textSize="10sp"
+                        app:layout_constraintEnd_toEndOf="@+id/Data_frequency"
+                        app:layout_constraintStart_toStartOf="@+id/Data_frequency"
+                        app:layout_constraintTop_toBottomOf="@+id/Data_frequency"
+                        tools:ignore="SmallSp" />
+
+                    <TextView
+                        android:id="@+id/Data_energy"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="24dp"
+                        android:text="@string/no_data"
+                        android:textSize="24sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/Data_pow_fack"
+                        app:layout_constraintTop_toBottomOf="@+id/Header_power" />
+
+                    <TextView
+                        android:id="@+id/Header_energy"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="@string/Actiwe_Energy"
+                        android:textSize="10sp"
+                        app:layout_constraintEnd_toEndOf="@+id/Data_energy"
+                        app:layout_constraintStart_toStartOf="@+id/Data_energy"
+                        app:layout_constraintTop_toBottomOf="@+id/Data_energy"
+                        tools:ignore="SmallSp" />
+
+                    <TextView
+                        android:id="@+id/Data_alarm"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="24dp"
+                        android:text="@string/no_data"
+                        android:textSize="24sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/Header_pow_fack" />
+
+                    <TextView
+                        android:id="@+id/header_alarm"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="@string/Alarm_active"
+                        android:textSize="10sp"
+                        app:layout_constraintEnd_toEndOf="@+id/Data_alarm"
+                        app:layout_constraintStart_toStartOf="@+id/Data_alarm"
+                        app:layout_constraintTop_toBottomOf="@+id/Data_alarm"
+                        tools:ignore="SmallSp" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+            <Button
+                android:id="@+id/but_timer"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="16dp"
+                android:onClick="click_timer"
+                android:text="@string/timer"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/card_data" />
+
+            <Button
+                android:id="@+id/but_log"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="32dp"
+                android:onClick="click_log"
+                android:text="@string/log"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/but_timer" />
+
+            <!--            <com.github.mikephil.charting.charts.BarChart-->
+            <!--                android:id="@+id/BCh_chartEnergy"-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="300dp"-->
+            <!--                android:layout_marginStart="8dp"-->
+            <!--                android:layout_marginTop="24dp"-->
+            <!--                android:layout_marginEnd="8dp"-->
+            <!--                android:layout_marginBottom="16dp"-->
+            <!--                android:onClick="click_UpChart"-->
+            <!--                app:layout_constraintBottom_toBottomOf="parent"-->
+            <!--                app:layout_constraintEnd_toEndOf="parent"-->
+            <!--                app:layout_constraintHorizontal_bias="0.0"-->
+            <!--                app:layout_constraintStart_toStartOf="parent"-->
+            <!--                app:layout_constraintTop_toBottomOf="@+id/but_timer"-->
+            <!--                app:layout_constraintVertical_bias="1.0"></com.github.mikephil.charting.charts.BarChart>-->
+            <com.github.mikephil.charting.charts.LineChart
+                android:id="@+id/lineChart"
+                android:layout_width="350dp"
+                android:layout_height="300dp"
+                android:layout_marginTop="700dp"
+                android:layout_marginBottom="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

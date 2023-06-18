@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>_Home_Socket_</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+		}
+
+		.container {
+			text-align: center;
+			margin-top: 20px;
+			margin-bottom: 20px;
+		}
+
+		.switch-container {
+			display: flex;
+			justify-content: flex-end;
+			align-items: center;
+			margin-right: 25%;
+			margin-bottom: 10px;
+		}
+
+		.switch {
+			position: relative;
+			display: inline-block;
+			width: 60px;
+			height: 34px;
+			border-radius: 17px;
+			overflow: hidden;
+		}
+
+		.switch input[type="checkbox"] {
+			opacity: 0;
+			width: 0;
+			height: 0;
+		}
+
+		.slider {
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			background-color: #ccc;
+			transition: .4s;
+			border-radius: 17px;
+		}
+
+		.slider:before {
+			position: absolute;
+			content: "";
+			height: 26px;
+			width: 26px;
+			left: 4px;
+			bottom: 4px;
+			background-color: white;
+			transition: .4s;
+			border-radius: 50%;
+			box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+		}
+
+		input[type="checkbox"]:checked + .slider {
+			background-color: #6EDB8B;
+		}
+
+		input[type="checkbox"]:checked + .slider:before {
+			transform: translateX(26px);
+		}
+
+		.slider-label {
+			margin-left: 10px;
+			margin-right: 10px;
+			font-weight: bold;
+		}
+
+		.table-container {
+			margin-top: 20px;
+		}
+
+		table {
+			width: 50%;
+			margin: 0 auto;
+			border-collapse: collapse;
+			box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+		}
+
+		th, td {
+			padding: 10px;
+			border: 1px solid #ccc;
+			text-align: left;
+		}
+
+		.button-container {
+			margin-top: 20px;
+			display: flex;
+			justify-content: center;
+		}
+
+		.button {
+			margin: 0 10px;
+			padding: 10px 20px;
+			font-size: 16px;
+			border-radius: 5px;
+			border: none;
+			background-color: #2196F3;
+			color: white;
+			cursor: pointer;
+			box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+			transition: background-color 0.3s;
+		}
+
+		.button:hover {
+			background-color: #0D8AEF;
+		}
+
+		.input-container {
+			margin-top: 20px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+
+		.input-field {
+			padding: 10px;
+			border: 1px solid #ccc;
+			border-radius: 5px;
+			width: 200px;
+			font-size: 16px;
+		}
+		.input-button {
+			margin-left: 10px;
+			padding: 10px 20px;
+			font-size: 16px;
+			border-radius: 5px;
+			border: none;
+			background-color: #2196F3;
+			color: white;
+			cursor: pointer;
+			box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+			transition: background-color 0.3s;
+		}
+		.input-button:hover {
+			background-color: #0D8AEF;
+		}
+		.extra-buttons-container {
+			margin-top: 20px;
+			display: flex;
+			justify-content: center;
+		}
+		.extra-button {
+			margin: 0 10px;
+			padding: 10px 20px;
+			font-size: 16px;
+			border-radius: 5px;
+			border: none;
+			background-color: #2196F3;
+			color: white;
+			cursor: pointer;
+			box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+			transition: background-color 0.3s;
+			width: 16%;
+		}
+		.extra-button:hover {
+			background-color: #0D8AEF;
+		}
+		.button {
+		  display: inline-block;
+		  padding: 8px 16px;
+		  background-color: #2196F3;
+		  color: #fff;
+		  border: none;
+		  border-radius: 4px;
+		  cursor: pointer;
+		}
+	/* Стилі вспливаючих вікон */
+		.popup {
+		  display: none;
+		  position: fixed;
+		  top: 0;
+		  left: 0;
+		  width: 100%;
+		  height: 100%;
+		  background-color: rgba(0, 0, 0, 0.5);
+		  z-index: 9999;
+		}
+		.popup-content {
+		  background-color: #fff;
+		  width: auto;
+		  height: auto;
+		  padding: 20px;
+		  margin: 100px auto;
+		  text-align: center;
+		  max-width: 50%; /* Опціонально: задаємо максимальну ширину контенту */
+		  max-height: 80%; /* Опціонально: задаємо максимальну висоту контенту */
+		  overflow: auto; /* Додайте прокрутку */
+		}
+		.popup-content h2 {
+		  margin-bottom: 20px;
+		}
+		.popup-content label {
+		  display: block;
+		  margin-bottom: 10px;
+		}
+		.popup-content input[type="time"] {
+		  padding: 5px;
+		  width: 100%;
+		  margin-bottom: 10px;
+		}
+		.popup-content button {
+		  display: block;
+		  margin: 10px auto;
+		  padding: 10px 20px;
+		  background-color: #4CAF50;
+		  color: #fff;
+		  border: none;
+		  cursor: pointer;
+		}
+		.popup-content table {
+		  width: 100%;
+		  margin-bottom: 10px;
+		}
+		.popup-content th,
+		.popup-content td {
+		  padding: 5px;
+		  border-bottom: 1px solid #ddd;
+		}
+		.popup-content th {
+		  background-color: #f2f2f2;
+		}
+		.popup-content td:first-child {
+		  font-weight: bold;
+		}
+		.popup-content td:last-child {
+		  text-align: right;
+		}
+		.popup .switch-container {
+		  display: flex;
+		  justify-content: flex-end;
+		  align-items: center;
+		  margin-right: 10px;
+		  margin-bottom: 10px;
+		}
+		.popup .switch {
+		  position: relative;
+		  display: inline-block;
+		  width: 40px;
+		  height: 24px;
+		  border-radius: 12px;
+		  overflow: hidden;
+		}
+		.popup .switch input[type="checkbox"] {
+		  opacity: 0;
+		  width: 0;
+		  height: 0;
+		}
+		.popup .slider {
+		  position: absolute;
+		  top: 0;
+		  left: 0;
+		  right: 0;
+		  bottom: 0;
+		  background-color: #ccc;
+		  transition: .4s;
+		  border-radius: 12px;
+		}
+		.popup .slider:before {
+		  position: absolute;
+		  content: "";
+		  height: 20px;
+		  width: 20px;
+		  left: 2px;
+		  bottom: 2px;
+		  background-color: white;
+		  transition: .4s;
+		  border-radius: 50%;
+		  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+		}
+		.popup input[type="checkbox"]:checked + .slider {
+		  background-color: #6EDB8B;
+		}
+		.popup input[type="checkbox"]:checked + .slider:before {
+		  transform: translateX(16px);
+		}
+		.popup .slider-label {
+		  margin-left: 8px;
+		  margin-right: 8px;
+		  font-weight: bold;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="switch-container">
+			<label class="slider-label">On/Off</label>
+			<div class="switch">
+				<input type="checkbox" id="relay_switch">
+				<label class="slider" for="relay_switch"></label>
+			</div>
+		</div>
+		<div class="table-container">
+			<table>
+				<tr>
+					<th>Voltage</th>
+					<td><span id="voltage">value</span> V</td>
+					<th>Current</th>
+					<td><span id="current">value</span> A</td>
+				</tr>
+				<tr>
+					<th>Power</th>
+					<td><span id="power">value</span> W</td>
+					<th>Energy</th>
+					<td><span id="energy">value</span> W/h</td>
+				</tr>
+				<tr>
+					<th>Frequency</th>
+					<td><span id="frequency">value</span> Hz</td>
+					<th>Power Factor</th>
+					<td><span id="power_factor">value</span> %</td>
+				</tr>
+				<tr>
+					<td style="border: none;"></td>
+					<th style="border: none;"><span id="nameAlarm">Alarm</span></th>
+					<td style="border: none;"><span id="alarm">value</span></td>
+					<td style="border: none;"></td>
+				</tr>
+			</table>
+		</div>
+		<div class="input-container">
+			<input type="text" class="input-field" id="alarmValue" placeholder="Enter value">
+			<button class="input-button" id="alarmButton">Задати значення тривоги (W)</button>
+		</div>
+		<div class="extra-buttons-container">
+			<button class="extra-button" onclick="openTimer()">Timer</button>
+			<button class="extra-button" onclick="openLog()">LOG</button>
+			<button class="extra-button"; onclick="openFileServer()">ToFileServer</button>
+		</div>
+		<div class="chart-container">
+			<canvas id="lineChart"></canvas>
+		</div>
+	</div>
+	
+	<div id="Timer" class="popup">
+		<div class="popup-content">
+			<div class="switch-container">
+				<label class="switch">
+					<input type="checkbox">
+					<span class="slider"></span>
+				</label>
+				<span class="slider-label">On/Off</span>
+			</div>
+
+		  <h2>Таймер</h2>
+		  <label for="timeInput1">Час увімкнення:</label>
+		  <input type="time" id="timeOn" />
+		  <label for="timeInput2">Час вимкнення:</label>
+		  <input type="time" id="timeOff" />
+		  <button class="extra-button"; onclick="closeTimer()">Закрити</button>
+		</div>
+	 </div>
+  
+	<div id="Log" class="popup">
+		<div class="popup-content">
+			<button class="extra-button"; onclick="closeLog()">Закрити</button>
+		</div>
+	</div>
+
+	<script>
+		var relaySwitch = document.getElementById("relay_switch");
+		relaySwitch.addEventListener('change', relay_inverse);
+		function relay_inverse(){
+			var request = new XMLHttpRequest();
+			request.open('GET','/relay_switch', false);	
+			request.onload = () => {
+				var	str = request.response;
+			
+				console.log(str);
+				relaySwitch.checked = str === "1";
+				
+			}
+			request.send();
+		}			
+		var Voltage = document.getElementById("voltage");
+		var Current = document.getElementById("current");
+		var Power = document.getElementById("power");
+		var Energy = document.getElementById("energy");
+		var Frequency = document.getElementById("frequency");
+		var PF = document.getElementById("power_factor");
+		var alarm = document.getElementById("alarm");
+		function up_data(){
+			var request = new XMLHttpRequest();
+			request.open('GET','/up_data', false);
+			request.onload = () => {
+				var str = request.response;
+				var mass = [];
+				var mass = str.split('/');
+
+				Voltage.innerHTML = mass[0];
+				Current.innerHTML = mass[1];
+				Power.innerHTML = mass[2];
+				Energy.innerHTML = mass[3];
+				Frequency.innerHTML = mass[4];
+				PF.innerHTML = mass[5];
+				relaySwitch.checked = mass[6] === "1";
+				alarm.innerHTML = mass[7] === "1";
+			}				
+			request.send();
+		}
+		setInterval(up_data, 1500);
+		var alarmValue = document.getElementById("alarmValue");
+		var alarmButton = document.getElementById("alarmButton");
+		alarmButton.addEventListener('click', set_alarm);
+		var nameAlarm = document.getElementById("nameAlarm");
+		function set_alarm(){
+			var request = new XMLHttpRequest();
+			request.open('POST','/set_alarm', false);
+			request.onload = () => {
+				nameAlarm.innerHTML = "Alarm (" + request.response + "w) ";
+			}
+			request.send(alarmValue.value);
+			nameAlarm.innerHTML = "";
+		}
+		function reguest_alarm(){
+			var request = new XMLHttpRequest();
+			request.open('GET','/value_alarm', false);
+			request.onload = () => {
+				nameAlarm.innerHTML = "Alarm (" + request.response + "w) ";
+			}
+			request.send();
+		}
+		reguest_alarm();		
+		function openFileServer() {
+			var currentUrl = window.location.href;
+			var baseUrl = currentUrl.substring(0, currentUrl.lastIndexOf('/'));
+			var differentDirectoryUrl = baseUrl + "/home";
+			window.location.href = differentDirectoryUrl;
+		}
+		var timeOn = document.querySelector("#timeOn");
+		var timeOff = document.querySelector("#timeOff");
+		var timerSwitch = document.querySelector("#timer_switch");
+		timerSwitch.addEventListener('change', set_timer);
+		function openTimer() {
+			var Timer = document.getElementById("Timer");
+			Timer.style.display = "block";
+			var request = new XMLHttpRequest();
+			request.open('GET','/value_timer', false);
+			request.onload = () => {
+				var str = request.response;
+				var mass = str.split('/');
+				timerSwitch.checked = mass[0] === "1";
+
+				timeOff.value = (mass[1] < 10 ? "0" + mass[1] : mass[1].toString()) + ":" + (mass[2] < 10 ? "0" + mass[2] : mass[2].toString());
+				timeOn.value = (mass[3] < 10 ? "0" + mass[3] : mass[3].toString()) + ":" + (mass[4] < 10 ? "0" + mass[4] : mass[4].toString());
+			}
+			request.send();
+		}
+		function set_timer(){
+			var request = new XMLHttpRequest();
+			request.open('POST','/timer_set', false);
+			request.onload = () => {
+				timerSwitch.checked = request.response === "1";
+			}
+			request.send(!timerSwitch.checked ? "0/" : "1/" + timeOff.value.replace(":", "/") + "/" + timeOn.value.replace(":", "/"));
+			openTimer();
+		}
+		function closeTimer() {
+		  var Timer = document.getElementById("Timer");
+		  Timer.style.display = "none";
+		}
+		function openLog() {
+			var request = new XMLHttpRequest();
+			request.open('GET', '/log_val', false);
+			request.onload = () => {
+				var str = request.response;
+				str = str.replace(/\s/g, "");
+				var mass = str.split('/');
+				console.log(mass[0]);
+
+				var popup = document.getElementById("Log");
+				var table = document.createElement("table");
+
+				for (var i = 0; i < mass.length; i++) {
+					if (mass[i] && mass[i].indexOf('&') !== -1) {
+						var row = table.insertRow();
+						var cell = row.insertCell();
+						var buf = "";
+						var index = 0;
+						while (mass[i][index] !== '&' && index < mass[i].length) {
+							buf += mass[i][index];
+							index++;
+						}
+						index += 2;
+						cell.textContent = buf;
+						cell = row.insertCell();
+						buf = "";
+						for (; index < mass[i].length; index++)
+							buf += mass[i][index];
+						cell.textContent = buf;
+					}
+				}
+				var popupContent = popup.querySelector(".popup-content");
+				popupContent.appendChild(table);
+				popup.style.display = "block";
+			};
+			request.send();
+		}
+		function closeLog() {
+			var Log = document.getElementById("Log");  
+			var Log = document.getElementById("Log");
+			var popupContent = Log.querySelector(".popup-content");
+			var table = popupContent.querySelector("table");
+			if (table) {
+				popupContent.removeChild(table);
+			}
+			Log.style.display = "none";
+		}
+	</script>
+</body>
+</html>

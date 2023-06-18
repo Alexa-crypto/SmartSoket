@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">My Smart Home</string>
+    <string name="Header_app">Mi Smart Plug</string>
+    <string name="error_conect">ERROR_Conection :-(</string>
+    <string name="connect_succes">Connect_Successfully</string>
+    <string name="On">On</string>
+    <string name="Off">Off</string>
+    <string name="On_Off">On/Off</string>
+    <string name="no_data">no_data</string>
+    <string name="Voltage">Voltage</string>
+    <string name="Current">Current</string>
+    <string name="Power">Power</string>
+    <string name="Frequency">Frequency</string>
+    <string name="Power_Factor">Power Factor</string>
+    <string name="Actiwe_Energy">Actiwe Energy</string>
+    <string name="Alarm_active">Alarm active </string>
+    <string name="update_conect">Update Conect</string>
+    <string name="timer">Timer</string>
+    <string name="log">Log</string>
+    <string name="hour">Hour</string>
+    <string name="minute">Minute</string>
+<!--    <string name="app_name">My Application</string>-->
+
+</resources>

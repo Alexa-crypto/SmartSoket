@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<!--    <string name="app_name">My Smart Home</string>-->
+
+<!--    <string name="no_data">no_data</string>-->
+
+    <string name="setting">Setting</string>
+    <string name="set_alarm">Set Alarm</string>
+    <string name="set_ip">Set IP</string>
+    <string name="present_val">Present value --> </string>
+    <string name="enter_val">Enter value</string>
+
+    <string name="Update_value_time">Update Time</string>
+    <!--    <string name="app_name">My Application</string>-->
+</resources>
